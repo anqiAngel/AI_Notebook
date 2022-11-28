@@ -5,7 +5,6 @@ from sklearn.model_selection import train_test_split
 
 # ##################### 添加图片文字 ###########################################
 from pylab import mpl
-
 mpl.rcParams['font.sans-serif'] = ['SimSun']  # 指定默认字体
 mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
