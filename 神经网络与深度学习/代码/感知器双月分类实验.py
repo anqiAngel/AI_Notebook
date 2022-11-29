@@ -155,7 +155,6 @@ if __name__ == '__main__':
     plt.title('损失函数曲线图', size=14)
     plt.xlabel('迭代次数', size=14)
     plt.ylabel('均方误差', size=14)
-    # plt.grid(ls=':', color='gray', alpha=0.5)  # alpha是透明度
     plt.plot(x, loss, c='r', linewidth=2, linestyle='-', marker='o')
     plt.savefig('./损失函数.png')
     plt.show()
