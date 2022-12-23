@@ -112,8 +112,8 @@ def loss_func():
     return loss
 
 
-for x in np.arange(-15., 20., 0.1):
-    for y in np.arange(-10., 15., 0.1):
+for x in np.arange(-15., 25., 0.1):
+    for y in np.arange(-15., 15., 0.1):
         test_m = np.array([x, y])
         y_p = predict(test_m)
         if round(y_p, 2) == c:

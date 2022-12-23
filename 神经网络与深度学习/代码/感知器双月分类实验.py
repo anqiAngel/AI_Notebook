@@ -56,9 +56,10 @@ def actual_func(xn, wn):
     return yn
 
 
-def updata(xn, wn, yn, dn, learning_rate):
+def updata(xn, wn, dn, learning_rate):
     '''更新权值'''
-    wn = wn + learning_rate * xn * (dn - yn)
+    if np.dot(wn, xn) * dn <= 0:
+        wn = wn + learning_rate * xn * dn
     return wn
 
 
@@ -73,9 +74,8 @@ def train(data, dn, wn, iterations, learning_rate):
         i = 0
         loss_temp = []
         for xn in data:
-            # print(xn)
             yn = actual_func(xn, wn)
-            wn = updata(xn, wn, yn, dn[i], learning_rate)
+            wn = updata(xn, wn, dn[i], learning_rate)
             loss_temp.append(loss_func(dn[i], yn))
             i = i + 1
         loss.append(sum(loss_temp) / len(loss_temp))
@@ -102,9 +102,10 @@ if __name__ == '__main__':
     w = 2
     r = 8
     d = 1
-    iter = 50  # 迭代次数
-    learning_rate = 0.001  # 学习率
-    wn = np.array([1, 0, 0])
+    iter = 100  # 迭代次数
+    learning_rate = 1  # 学习率
+    # wn = np.array([1, 0, 0])
+    wn = (np.random.rand(3,) - 0.5) * 0.2
     data = moon(N, w, r, d)
     print((data[:, 1:3]))
     print((data[:, 3]))
